@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Link to external css file -->
+<link rel='stylesheet' href='/style.css' />
+<!-- Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Orbitron:500' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<h1>Edit <%= posts.title %></h1>
+<form method="POST" action="/posts/<%= posts.id %>?_method=PATCH">
+	<input type="text" name="author" placeholder="Author" value="<%= posts.author %>"><br><br>
+	<input type="text" name="title" placeholder="Title" value="<%= posts.title %>"><br><br>
+	<textarea rows="40" cols="100" name="body"></textarea><br><br>
+	<input type="submit">
+</form>
+</body>
+</html>

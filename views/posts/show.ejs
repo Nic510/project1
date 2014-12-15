@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Link to external css file -->
+<link rel='stylesheet' href='/style.css'/>
+<!-- Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Orbitron:500' rel='stylesheet' type='text/css'>
+	<title><%= posts.author %></title>
+</head>
+<body>
+<h1><%= posts.author %></h1>
+<div id="content">
+<p>Title: <%= posts.title %></p>
+<p>Body: <%= posts.body %></p>
+<a href="/posts/<%= posts.id %>/edit">Edit</a>
+|
+<form method="POST" action="/posts/<%= posts.id %>?_method=DELETE">
+<input type="submit" value="DELETE">
+</div>
+</form>
+</body>
+</html>

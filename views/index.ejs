@@ -1,0 +1,148 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
+var geocoder;
+var map;
+// Initializes Map
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(37.7749295, -122.4194155);
+  var mapOptions = {
+    zoom: 7,
+    center: latlng
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+}
+// Geocodes Address
+function codeAddress() {
+  var address = document.getElementById('address').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<!-- Link to Stylesheet !-->
+<link rel='stylesheet' href='/style.css' />
+</head>
+
+<body>
+<div id="header">
+<center><h1>Photograph Finder</h1></div></center>
+<!-- NavBar !-->
+<div id="nav">
+<h2><% if(user) { %>
+<%= user.username %>
+<% }%></h2>
+<br><br><a href="./login">LOGIN</a><br><br>
+<br><br><a href="./logout">LOGOUT</a><br><br>
+<br><br><a href="./posts/new">Create New Photo Post</a><br><br><br><br>
+</div>
+<!-- Slider !-->
+<center><ul class="slides">
+    <input type="radio" name="radio-btn" id="img-1" checked />
+    <li class="slide-container">
+		<div class="slide">
+			<img src="http://i820.photobucket.com/albums/zz125/josephb555/northern-lights.jpg" />
+        </div>
+		<div class="nav">
+			<label for="img-6" class="prev">&#x2039;</label>
+			<label for="img-2" class="next">&#x203a;</label>
+		</div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-2" />
+    <li class="slide-container">
+        <div class="slide">
+        <!-- Should be user input !-->
+          <img src="http://i65.photobucket.com/albums/h235/Ignwar/Album%20Forces%20of%20Nature/AuroralPillars.jpg" />
+        </div>
+		<div class="nav">
+			<label for="img-1" class="prev">&#x2039;</label>
+			<label for="img-3" class="next">&#x203a;</label>
+		</div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-3" />
+    <li class="slide-container">
+        <div class="slide">
+         <!-- Should be user input !-->
+          <img src="http://i42.photobucket.com/albums/e310/Morgoth_Bauglir/3259217139_eae935e404_b.jpg" />
+        </div>
+		<div class="nav">
+			<label for="img-2" class="prev">&#x2039;</label>
+			<label for="img-4" class="next">&#x203a;</label>
+		</div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-4" />
+    <li class="slide-container">
+        <div class="slide">
+         <!-- Should be user input !-->
+          <img src="http://i141.photobucket.com/albums/r48/thon_01_z/HDR%20Images/OverThereisover.jpg" />
+        </div>
+		<div class="nav">
+			<label for="img-3" class="prev">&#x2039;</label>
+			<label for="img-5" class="next">&#x203a;</label>
+		</div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-5" />
+    <li class="slide-container">
+        <div class="slide">
+         <!-- Should be user input !-->
+          <img src="http://i414.photobucket.com/albums/pp225/dpepple100/High%20Dynamic%20Range%20HDR/NYCWoldTradeTowerMemorial2008x.jpg" />
+        </div>
+		<div class="nav">
+			<label for="img-4" class="prev">&#x2039;</label>
+			<label for="img-6" class="next">&#x203a;</label>
+		</div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-6" />
+    <li class="slide-container">
+        <div class="slide">
+         <!-- Should be user input !-->
+          <img src="http://i104.photobucket.com/albums/m192/ESTIOS/HDR/HDR-Coteau.jpg" />
+        </div>
+		<div class="nav">
+			<label for="img-5" class="prev">&#x2039;</label>
+			<label for="img-1" class="next">&#x203a;</label>
+		</div>
+    </li>
+    <!-- Dots on Slider !-->
+    <li class="nav-dots">
+      <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+      <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+      <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+      <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+      <label for="img-5" class="nav-dot" id="img-dot-5"></label>
+      <label for="img-6" class="nav-dot" id="img-dot-6"></label>
+    </li>
+</ul></center>
+</div>
+<!-- Google Map !-->
+		<center>
+      <input id="address" type="textbox" value="Oakland, CA">
+      <input type="button" value="Geocode" onclick="codeAddress()">
+    </div>
+    <div id="map-canvas"></div>
+</center>
+</body>
+</html> 

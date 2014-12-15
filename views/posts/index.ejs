@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Link to external css file -->
+<link rel='stylesheet' href='/style.css' />
+<!-- Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Orbitron:500' rel='stylesheet' type='text/css'>
+	<title>Welcome!</title>
+</head>
+<body>
+<h1><strong>Photo Post</strong></h1>
+<ul>
+	<% for (var i = 0; i < posts.length; i++) { %>
+	<li>
+	<a href="/posts/<%= posts[i].id %>">
+	<%= posts[i].title %></li>
+<% } %>
+</ul>
+<div>
+<a href="/posts/new">Add Post</a>
+</div>
+</body>
+</html>
