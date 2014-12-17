@@ -1,23 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-<!-- Link to external css file -->
-<link rel='stylesheet' href='/style.css'/>
-<!-- Google Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Orbitron:500' rel='stylesheet' type='text/css'>
-	<title><%= posts.author %></title>
-</head>
-<body>
-<h1><%= posts.author %></h1>
-<div id="content">
-<p>Title: <%= posts.title %></p>
-<p>Body: <%= posts.body %></p>
-<a href="/posts/<%= posts.id %>/edit">Edit</a>
-|
-<form method="POST" action="/posts/<%= posts.id %>?_method=DELETE">
-<input type="submit" value="DELETE">
-</div>
-</form>
-</body>
+	<head>
+		<!-- Link to external Bootstrap file -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		 <!-- Link to Stylesheet !-->
+		<link rel='stylesheet' href='/style.css'/>
+		<!-- Link to Google Fonts !-->
+		<link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+			<title>Post</title>
+	</head>
+	<body>
+	<h1>Post</h1>
+	 <!-- Bootstrap Navbar -->
+    <nav role="navigation" class="navbar navbar-default">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+
+        <div class="navbar-header">
+
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+            </button>
+        </div>
+
+        <!-- Collection of nav links and other content for toggling -->
+
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+
+            <ul class="nav navbar-nav">
+
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="./logout">Logout</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                	<a href="./posts/new"> <button type="button" class="btn btn-primary btn-lg">
+  <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Upload Photo</button></a>
+            </ul>
+
+        </div>
+
+    </nav>
+			<div id="content">
+			<p>Location: <%= images.location %></p>
+			<p>Title: <%= images.title %></p>
+			<p><img src="<%= images.imagesource %>" />
+			<form method="POST" action="/posts/<%= images.id %>?_method=DELETE">
+			<a href="./posts/<%= images[0].id %>/edit"><input type="submit" value="delete" class="btn btn-primary btn-lg"></a>
+			 <input type="submit" value="delete" class="btn btn-danger btn-lg">
+			</form>
+			</div>
+	</body>
 </html>

@@ -1,41 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Varela+Round);
-body {
-    background-image: 
+html {
+  background-image: 
     url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/grid.png),
     url(http://bestcamera.biz/wp-content/uploads/2014/07/camera-photography-wallpaper.jpg);
   background-blend-mode: color-burn;
   background-size: 16px 16px, cover;
-}
-h1 {
-    padding: 20px;
-    color: #E0FFF5;
-    font-family: 'Allan', Helvetica, Arial, sans-serif;
-    font-size: 86px;
-    text-shadow: -1px 0 black, 0 2px red, 1px 0 black, 0 -2px red;
-}
-#newH1 {
-    padding: 20px;
-    color: #E0FFF5;
-    font-family: 'Allan', Helvetica, Arial, sans-serif;
-    font-size: 86px;
-    text-shadow: -1px 0 black, 0 2px red, 1px 0 black, 0 -2px red;
-}
-
-#nav {
-    position: fixed;
-    background-color: #FFFFCC;
-    border: 5px solid gray;
-    border-radius: 5px;
-    font-family: 'Cardo', Georgia, Times, serif;
-    font-size: 18px;
-    box-shadow: 1px 1px 1px #FF0000;
-}
-.bg-info{
-
-    color: white;
-    font-family: 'Cardo', Helvetica, Arial, sans-serif;
-    font-size: 24px;
-    text-shadow: -1px 0 black, 0 2px red, 1px 0 black, 0 -2px red;
 }
 #map-canvas {
         width: 609px;
@@ -71,9 +39,6 @@ h2 {
     padding: 20px;
 }
 form {
-    background-color: #FFFFCC;
-}
-#content {
     background-color: #FFFFCC;
 }
 .slides {
