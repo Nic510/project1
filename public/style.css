@@ -21,7 +21,7 @@ h1 {
     text-shadow: -1px 0 black, 0 2px red, 1px 0 black, 0 -2px red;
 }
 
-#nav {
+/*#nav {
     position: fixed;
     background-color: #FFFFCC;
     border: 5px solid gray;
@@ -36,7 +36,7 @@ h1 {
     font-family: 'Cardo', Helvetica, Arial, sans-serif;
     font-size: 24px;
     text-shadow: -1px 0 black, 0 2px red, 1px 0 black, 0 -2px red;
-}
+}*/
 #map-canvas {
         width: 609px;
         height: 420px;
@@ -49,7 +49,7 @@ h1 {
         margin: 0px;
         padding: 0px
       }*/
-#panel {
+/*#panel {
         position: absolute;
         top: 700px;
         left: 50%;
@@ -58,7 +58,7 @@ h1 {
         background-color: #fff;
         padding: 5px;
         border: 1px solid #999;
-      }
+      }*/
 /*#header {
     background-image: url(http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Camera.svg/120px-Camera.svg.png);
   background-blend-mode: multiply;

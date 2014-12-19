@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>All Photos</title>
 <!-- Link to external Bootstrap file -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -13,11 +14,45 @@
 <!-- Link to Google Fonts !-->
 <link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
-	<title>Welcome!</title>
+<!--Google Maps!-->
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
+var geocoder;
+var map;
+// Initializes Map
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(37.7749295, -122.4194155);
+  var mapOptions = {
+    zoom: 7,
+    center: latlng
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+}
+// Geocodes Address
+function codeAddress() {
+  var address = document.getElementById('address').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 </head>
 <body>
-<h1><strong>Photo Post</strong></h1>
- <!-- Bootstrap Navbar -->
+	<div class="page-header"><center><h1>All User Posts</h1></center></div>
+   <!-- Bootstrap Navbar -->
     <nav role="navigation" class="navbar navbar-default">
 
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,7 +89,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                	<a href="./posts/new"> <button type="button" class="btn btn-primary btn-lg">
+                  <a href="./posts/new"> <button type="button" class="btn btn-primary btn-lg">
   <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Upload Photo</button></a>
             </ul>
 
@@ -63,10 +98,10 @@
     </nav>
 <form>
 <ul>
-	<% for (var i = 0; i < images.length; i++) { %>
-	<li>
-	<a href="/posts/<%=images[i].id %>">
-	<%= images[i].title %></li>
+  <% for (var i = 0; i < images.length; i++) { %>
+  <li>
+  <a href="/posts/<%=images[i].id %>">
+  <%= images[i].title %></li>
 <% } %>
 </ul>
 <div>
