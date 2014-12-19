@@ -2,11 +2,7 @@ var pg	=	require('pg');
 
 // Set up database
 var db = {};
-db.config = {
- database: "project1db",
-port: 5432,
-host: "localhost"
-};
+
 db.connect = function(runAfterConnecting) {
   console.log(process.env.DATABASE_URL);
 
