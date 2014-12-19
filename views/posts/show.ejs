@@ -148,6 +148,18 @@ google.maps.event.addDomListener(window, 'load', initialize);
 $('.col-lg-3 img').on("click", function(){
   $('#address').val($(this).attr('class'));
 });
+$(document).ready(function() {
+
+     $('.container').hover(
+         function () {
+           $(this).css({"background-color":"red"});
+         }, 
+         function () {
+           $(this).css({"background-color":"blue"});
+         }
+     );
+
+   }); 
 
 </script>
 <!-- jQuery !-->
