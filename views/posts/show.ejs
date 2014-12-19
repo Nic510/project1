@@ -1,23 +1,70 @@
 <!DOCTYPE html>
 <html>
-	<head>
-<!-- Link to external Bootstrap file -->
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style type="text/css">
+  .container {
+    width: 200px;
+    height: 120px;
+}
+
+/* resize images */
+.col-lg-3 img {
+    width: 100%;
+    height: 100%;
+}
+</style>
+  <title>All Photo Posts</title>
+   <!-- Link to Stylesheet !-->
+  <link rel='stylesheet' href='/style.css'/>
+ <!-- Link to external Bootstrap file -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
->
-		 <!-- Link to Stylesheet !-->
-		<link rel='stylesheet' href='/style.css'/>
-		<!-- Link to Google Fonts !-->
-		<link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
-		<link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
-			<title>Post</title>
-	</head>
-	<body>
-	<h1>Post</h1>
-	 <!-- Bootstrap Navbar -->
+
+ 
+  <!--Google Maps!-->
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
+var geocoder;
+var map;
+// Initializes Map
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(37.7749295, -122.4194155);
+  var mapOptions = {
+    zoom: 10,
+    center: latlng
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+}
+// Geocodes Address
+function codeAddress() {
+  var address = document.getElementById('address').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+  
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<!--                                                                                !-->
+<body>
+ <!-- Bootstrap Navbar -->
     <nav role="navigation" class="navbar navbar-default">
 
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,32 +90,65 @@
 
             <ul class="nav navbar-nav">
 
-                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/"> <button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</button></a></li>
+        
+                <li>
+              <a href="/posts"> <button type="button" class="btn btn-info btn-lg">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit Posts</button></a>
+            </li>
                 <li><form class="form" role="form" action ="/logout?_method=DELETE" method="POST" accept-charset="UTF-8" id="login-nav">
                 <div class="form-group">
-                <button type="submit" class="btn btn-default btn-block">Log Out</button>
+                <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log Out</button>
                 </div>
-                  </form></li>
+                </form></li>
+                
+               
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                
                 <li>
-                	<a href="./posts/new"> <button type="button" class="btn btn-primary btn-lg">
-  <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>Upload Photo</button></a>
+                  <a href="./posts/new"><button type="button" class="btn btn-primary btn-lg">
+  <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Upload Photo</button></a></li>              
+              
             </ul>
 
         </div>
 
     </nav>
-			<div id="content">
-			<p>Location: <%= images.location %></p>
-			<p>Title: <%= images.title %></p>
-			<p><img src="<%= images.imagesource %>" />
-			<form method="POST" action="/posts/<%= images.id %>?_method=DELETE">
-			<a href="./posts/<%= images[0] %>/edit"><input type="submit" value="delete" class="btn btn-danger btn-lg"></a>
-			</form>
-			</div>
-            <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	</body>
+
+<!-- Pictures !-->
+<div class="container">
+    <div class="col-lg-3">
+      <img src="<%=images[4].imagesource%>" class="<%=images[4].location%>"/> 
+    </div>
+ 
+    <div class="col-lg-3">
+      <img src="<%=images[1].imagesource%>" class="<%=images[1].location%>" />
+    </div>
+    <div class="col-lg-3">
+      <img src="<%=images[2].imagesource%>" class="<%=images[2].location%>" />
+    </div>
+ 
+    <div class="col-lg-3">
+      <img src="<%=images[3].imagesource%>" class="<%=images[3].location%>" />
+    </div>
+  </div>
+<!-- Google Map !-->
+    
+      <input id="address" type="textbox" value="">
+      <input type="button" value="Geocode" onclick="codeAddress()">
+    </div>
+  <center>
+    <div id="map-canvas"></div>
+</center>
+</div>
+<script type="text/javascript">
+$('.col-lg-3 img').on("click", function(){
+  $('#address').val($(this).attr('class'));
+});
+
+</script>
+</body>
 </html>

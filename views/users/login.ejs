@@ -8,9 +8,7 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-<!-- Link to Google Fonts !-->
-<link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+
 <style type="text/css">
 body
 {
@@ -194,17 +192,7 @@ form.login a:hover
     left: 45%;
 }
 </style>
-<script src="jquery-1.11.1.min.js">
-    $(document).ready(function () {
-    $('.forgot-pass').click(function(event) {
-      $(".pr-wrap").toggleClass("show-pass-reset");
-    }); 
-    
-    $('.pass-reset-submit').click(function(event) {
-      $(".pr-wrap").removeClass("show-pass-reset");
-    }); 
-});
-</script>
+
 <body>
 <div class="container">
     <div class="row">
@@ -230,6 +218,19 @@ form.login a:hover
         </div>
     </div>
 </div>
+<script src="jquery-1.11.1.min.js">
+    $(document).ready(function () {
+    $('.forgot-pass').click(function(event) {
+      $(".pr-wrap").toggleClass("show-pass-reset");
+    }); 
+    
+    $('.pass-reset-submit').click(function(event) {
+      $(".pr-wrap").removeClass("show-pass-reset");
+    }); 
+});
+</script>
+<!-- jQuery !-->
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>

@@ -27,24 +27,23 @@ saveUninitialized: true
 
 //Serializer
 passport.serializeUser(function(user, done) {
-	done(null, user.id);
+  done(null, user.id);
 });
 // Deserializer
 passport.deserializeUser(function(id, done) {
-	db.query('SELECT * FROM users WHERE id = $1', [id], function(err, dbRes) {
-		if (!err) {
-		done(err, dbRes.rows[0]);
-		}
+  db.query('SELECT * FROM users WHERE id = $1', [id], function(err, dbRes) {
+  	if (!err) {
+  		done(err, dbRes.rows[0]);
+  	}
 	});
 });
 // Local Strategy
 var localStrategy = new LocalStrategy(function(name, password, done) {
-	db.query('SELECT * FROM users WHERE name = $1', [name], function(err, dbRes) {
-    var user = dbRes.rows[0];
+  db.query('SELECT * FROM users WHERE name = $1', [name], function(err, dbRes) {
+  	var user = dbRes.rows[0];
     
-		if (err) { return done(err); }
-
-		if (!user) { 
+    if (err) { return done(err); }
+    if (!user) { 
 			return done(null, false, { message: 'Unknown user ' +user }); 
 		}
 		if (user.password != password) { 
@@ -62,7 +61,7 @@ app.use(passport.session());
 ////////////////////////////////////////////////////////////
 // app.get Routes
 app.get('/', function(req, res)	{
-		db.query('SELECT * FROM images;', function(err, dbRes) {
+	db.query('SELECT * FROM images;', function(err, dbRes) {
 		if(!err) {
 			res.render('index', {images: dbRes.rows, user: req.user});
 		}
@@ -76,11 +75,11 @@ app.get('/users/login', function(req, res) {
 app.get('/posts', function(req, res)	{
 	db.query('SELECT * FROM images;', function(err, dbRes) {
 		if(req.user){
-		if(!err) {
-			res.render('posts/index', {images: dbRes.rows});
-		}
+			if(!err) {
+				res.render('posts/index', {images: dbRes.rows});
+			}
 		} else {
-		res.redirect('/')
+			res.redirect('/')
 		}
 	});
 });
@@ -88,7 +87,7 @@ app.get('/posts', function(req, res)	{
 // Add new post
 app.get('/posts/new', function(req, res)	{
 	if(req.user){
-	res.render('posts/new')
+		res.render('posts/new')
 	} else {
 		res.redirect('/')
 	}
@@ -97,7 +96,8 @@ app.get('/posts/new', function(req, res)	{
 // Show Posts
 app.get('/posts/:id', function(req, res)	{
 	var user = req.user;
-	db.query('SELECT * FROM images WHERE id = $1', [req.params.id], function(err, dbRes)	{
+	db.query('SELECT * FROM images WHERE id = $1', [req.params.id], function(err, dbRes)
+	{
 		if(req.user){
 			if(!err) {
 				res.render('posts/show', {user: user, images: dbRes.rows[0]});
@@ -127,13 +127,12 @@ app.get('/users/signup', function(req, res) {
 	res.render('users/signup');
 });
 //Show All Images----not working
-app.get('posts/showall', function(req, res) {
-	if(req.user){
-	res.render('posts/showall', { images: dbRes.rows[0]})
-	} else {
-		res.redirect('/')
-	}
+app.get('/show', function(req, res) {
+	db.query('SELECT * FROM images;', function(err, dbRes) {
+		res.render('posts/show', { images: dbRes.rows } );
+	});
 });
+
 
 app.get('/test', function(req, res) {
   db.query('SELECT * FROM images;', function(err, dbRes) {
@@ -170,7 +169,7 @@ app.post('/users/login',
 );
 
 // New User Login
-app.post('users/signup', function(req, res){
+app.post('/users/signup', function(req, res){
 	var params	=	[req.body.name, req.body.password]
     db.query("INSERT INTO users (name, password) VALUES ($1, $2)", params, function(err, dbRes){
         if(!err){

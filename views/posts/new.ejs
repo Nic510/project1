@@ -70,7 +70,6 @@ window.getCoordinates = function (address, callback){
 </script>
 </head>
 <body>
-  <h1 id="newH1">Add a new Photo post!</h1>
   <!-- Bootstrap Navbar -->
   <nav role="navigation" class="navbar navbar-default">
 
@@ -102,33 +101,38 @@ window.getCoordinates = function (address, callback){
         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</button></a>
       </li>
       <li>
-        <a href="./showall"> <button type="button" class="btn btn-warning btn-lg">
-        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>Show All Photos</button></a>
+        <a href="/show"> <button type="button" class="btn btn-warning btn-lg">
+        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Show All Photos</button>
+        </a>
+      </li>
+      <li>
+        <a href="/posts"> <button type="button" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit Posts</button></a>
       </li>
       <li>
         <form class="form" role="form" action ="/logout?_method=DELETE" method="POST" accept-charset="UTF-8" id="login-nav">
         <div class="form-group">
         <button type="submit" class="btn btn-default btn-block">Log Out</button>
-      </div>
         </form>
       </li>
     </ul>
+  </div>
 
   </nav>
   <form role="form" action="/posts" method="POST">
     <div class="form-group">
     <label for="exampleInputLocation">Image Source</label>
-      <input type="text" class="form-control" name="imagesource" id="exampleInputImageSource" placeholder="Enter http location of image"><br><br>
+      <input type="text" class="form-control" name="imagesource" id="exampleInputImageSource" placeholder="Enter http location of image"><br>
       <label for="exampleInputLocation">Location</label>
-      <input type="text" class="form-control" name="location" id="exampleInputLocation" placeholder="Enter location in Geocode Map!" readonly=""><br><br>
+      <input type="text" class="form-control" name="location" id="exampleInputLocation" placeholder="Enter location in Geocode Map!" readonly=""><br>
       <label for="exampleInputPhotoLocation">Title</label>
-      <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter title"><br><br>
+      <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter title"><br>
       <button type="submit" class="btn btn-success btn-lg">Submit</button>
     </div>
   </form>
   <!-- Google Map !-->
     <center>
-      <input id="address" type="textbox" value="Oakland, CA">
+      <input id="address" type="textbox" value="Enter Location">
       <input type="button" value="Geocode" onclick="codeAddress()">
     </div>
     <div id="map-canvas"></div>
