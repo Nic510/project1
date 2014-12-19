@@ -68,7 +68,7 @@ app.get('/', function(req, res)	{
 	});
 });
 //Login Page
-app.get('/users/login', function(req, res) {
+app.get('/login', function(req, res) {
 	res.render('users/login');
 });
 // Posts Page
@@ -126,7 +126,7 @@ app.get('/users/signup', function(req, res) {
 	var user = req.user
 	res.render('users/signup');
 });
-//Show All Images----not working
+//Show All Images
 app.get('/show', function(req, res) {
 	db.query('SELECT * FROM images;', function(err, dbRes) {
 		res.render('posts/show', { images: dbRes.rows } );
