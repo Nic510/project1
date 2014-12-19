@@ -68,7 +68,7 @@ app.get('/', function(req, res)	{
 	});
 });
 //Login Page
-app.get('/login', function(req, res) {
+app.get('/users/login', function(req, res) {
 	res.render('users/login');
 });
 // Posts Page
