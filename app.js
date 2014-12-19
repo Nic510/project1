@@ -161,7 +161,7 @@ app.post('/posts', function(req, res)	{
 });
 
 // Login
-app.post('/login',
+app.post('/users/login',
   passport.authenticate('local', { 
   	successRedirect: '/',
     failureRedirect: 'users/login'
