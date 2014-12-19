@@ -134,12 +134,12 @@ app.get('/show', function(req, res) {
 });
 
 
-app.get('/test', function(req, res) {
+app.get('/show', function(req, res) {
   db.query('SELECT * FROM images;', function(err, dbRes) {
 	  if(req.user){
 		  if(!err) {
 		  	console.log(dbRes.rows)
-		    res.render('posts/test', {images: dbRes.rows});
+		    res.render('posts/show', {images: dbRes.rows});
 			}
 		} else {
 			res.redirect('/');
