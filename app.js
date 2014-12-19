@@ -139,7 +139,7 @@ app.get('/show', function(req, res) {
 	  if(req.user){
 		  if(!err) {
 		  	console.log(dbRes.rows)
-		    res.render('posts/', {images: dbRes.rows});
+		    res.render('posts/show', {images: dbRes.rows});
 			}
 		} else {
 			res.redirect('/');
