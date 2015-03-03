@@ -68,8 +68,8 @@ app.get('/', function(req, res)	{
 	});
 });
 //Login Page
-app.get('/users/login', function(req, res) {
-	res.render('users/login');
+app.get('/login', function(req, res) {
+	res.render('login');
 });
 // Posts Page
 app.get('/posts', function(req, res)	{
@@ -161,12 +161,10 @@ app.post('/posts', function(req, res)	{
 });
 
 // Login
-app.post('/login',
-  passport.authenticate('local', { 
-  	successRedirect: '/',
-    failureRedirect: 'users/login'
-  })
-);
+app.post('/', passport.authenticate('local',
+{failureRedirect: '/login'}), function(req, res) {
+res.redirect('/');
+});
 
 // New User Login
 app.post('/users/signup', function(req, res){

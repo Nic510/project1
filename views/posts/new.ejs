@@ -2,19 +2,18 @@
 <html>
 <head>
   <title>New Photo Post!</title>
-   <!-- Link to Stylesheet !-->
-  <link rel='stylesheet' href='/style.css'/>
- <!-- Link to external Bootstrap file -->
+<!-- Link to external Bootstrap file -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
-  <!-- Link to Google Fonts !-->
-  <link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
-  <!--Google Maps!-->
+<!-- Link to Stylesheet !-->
+<link rel='stylesheet' href='/style.css'/>
+<!-- Link to Google Fonts !-->
+<link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+<!--Google Maps!-->
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <meta charset="utf-8">
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -92,32 +91,28 @@ window.getCoordinates = function (address, callback){
 
   <!-- Collection of nav links and other content for toggling -->
 
-  <div id="navbarCollapse" class="collapse navbar-collapse">
-
-    <ul class="nav navbar-nav">
-
-      <li>
-        <a href="/"> <button type="button" class="btn btn-default btn-lg">
+<!--  -->
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/"> <button type="button" class="btn btn-default btn-lg">
         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</button></a>
-      </li>
-      <li>
-        <a href="/show"> <button type="button" class="btn btn-warning btn-lg">
-        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Show All Photos</button>
-        </a>
-      </li>
-      <li>
-        <a href="/posts"> <button type="button" class="btn btn-info btn-lg">
-        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit Posts</button></a>
-      </li>
-      <li>
-        <form class="form" role="form" action ="/logout?_method=DELETE" method="POST" accept-charset="UTF-8" id="login-nav">
-        <div class="form-group">
-        <button type="submit" class="btn btn-default btn-block">Log Out</button>
-        </form>
-      </li>
-    </ul>
-  </div>
-
+    </li>
+    <li>
+      <a href="/show"> <button type="button" class="btn btn-warning btn-lg">
+      <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Show All Photos</button>
+      </a>
+    </li>
+    <li>
+      <a href="/posts"> <button type="button" class="btn btn-info btn-lg">
+      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit Posts</button></a>
+    </li>
+    <li>
+      <form class="form" role="form" action ="/logout?_method=DELETE" method="POST" accept-charset="UTF-8" id="login-nav">
+      <div class="form-group">
+      <button type="submit" class="btn btn-default btn-block">Log Out</button>
+      </form>
+    </li>
+</ul>
+<!--  -->
   </nav>
   <form role="form" action="/posts" method="POST">
     <div class="form-group">
