@@ -208,6 +208,7 @@ app.patch('/posts/:id', function(req, res)	{
 
 
 //Listen on port 4000
-app.listen(process.env.PORT || 3000);
+var port = Number(process.env.PORT || 4000)
+app.listen(port);
 //Inform about setup
 console.log('Server is running!')
